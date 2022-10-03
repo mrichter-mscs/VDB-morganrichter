@@ -1,0 +1,38 @@
+VIDEO EXAMPLE: 
+SELECT        Apartment.Apt_Number, Person.First_Name, Person.Last_Name, Person.Middle_Initial, Person.Phone_Number
+FROM            Apartment INNER JOIN
+                         Person ON Apartment.Tenant_ID = Person.Person_ID
+ORDER BY Person.Last_Name
+
+FIRST TABLE:
+SELECT        Apartment.Apartment_ID AS Expr1, Apartment.Apt_Number AS Expr2, Apartment.Rent AS Expr3, Apartment.Beds AS Expr4, Apartment.Baths, Apartment.Sq_Ft, Apartment.Building_ID, Apartment.Tenant_ID, Apartment.Manager_ID, 
+                         Building.Address_ID, Building.Building_Name, Building.Building_ID AS Expr5
+FROM            Apartment INNER JOIN
+                         Building ON Apartment.Building_ID = Building.Building_ID
+ORDER BY Building.Building_Name
+
+SECOND TABLE:
+SELECT        Address.Address_ID, Address.Street_1, Address.Street_2, Address.City, Address.State, Address.Zip, Person.Person_ID, Person.First_Name, Person.Last_Name, Person.Middle_Initial, Person.Phone_Number, 
+                         Person.Address_ID AS Expr1
+FROM            Address INNER JOIN
+                         Person ON Address.Address_ID = Person.Address_ID
+ORDER BY Person.Last_Name
+
+THIRD TABLE:
+SELECT        Building.Building_Name, Address.Address_ID, Building.Address_ID AS Expr1
+FROM            Address INNER JOIN
+                         Building ON Address.Address_ID = Building.Address_ID
+ORDER BY Address.City
+
+FOURTH TABLE:
+SELECT        Invoice.*, Receipt.*
+FROM            Invoice INNER JOIN
+                         Receipt ON Invoice.InvoiceID = Receipt.Invoice_ID
+
+FIFTH TABLE:
+SELECT        LineItem.Qty, Product.Name, Product.Price
+FROM            LineItem INNER JOIN
+                         Product ON LineItem.Product_ID = Product.Product_ID
+
+
+
